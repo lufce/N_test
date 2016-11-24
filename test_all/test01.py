@@ -54,11 +54,18 @@ def sigmoid(x):
 def ReLU(x):
     return x.maximum(0, x)
 
-x = np.arange(-5,5,0.1)
-y = sigmoid(x)
-plt.plot(x,y)
-plt.ylim(-0.1, 1.1)
-plt.show()
+def softmax(a):
+    c = np.max(a)
+    exp_a = np.exp(a-c)
+    sum_exp_a = np.sum(exp_a)
+    return exp_a / sum_exp_a
+
+
+x = np.array([1,3,2])
+y = softmax(x)
+print(y)
+print(np.sum(y))
+
 
 '''
 print(XOR(0,0))
