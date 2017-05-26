@@ -6,8 +6,10 @@ Created on 2016/11/23
 
 import numpy as np
 import matplotlib.pyplot as plt
+import time
 from numba.tests.npyufunc.test_ufunc import dtype
 
+time1 = time.clock()
 print("start")
 
 def AND(x1, x2):
@@ -61,10 +63,17 @@ def softmax(a):
     return exp_a / sum_exp_a
 
 
-x = np.array([1,3,2])
+x = np.array([2,3,2])
+
+time2 = time.clock()
 y = softmax(x)
+time3 = time.clock()
 print(y)
 print(np.sum(y))
+time4 = time.clock()
+
+print("Processing time = " + str(time4 - time1))
+print("softmax time = " + str(time3 - time2))
 
 
 '''
